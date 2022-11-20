@@ -36,6 +36,7 @@
     "@testing-library/react": "^13.2.0",
     "@types/jest": "^27.5.1",
     "@types/react": "^18.0.9",
+    "@types/styled-components": "^5.1.26",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
@@ -70,5 +71,7 @@
     "component library"
   ],
   "types": "dist/index.d.ts",
-  "dependencies": {}
+  "dependencies": {
+    "styled-components": "^5.3.6"
+  }
 }
