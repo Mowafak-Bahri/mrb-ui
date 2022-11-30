@@ -23,6 +23,7 @@ export default {
       type: 'text'
     }
   },
+  
   tailwindStyle: { control: 'text'},
   color: { control: 'select', options: ['primary', 'secondary','error', 'warning','info', 'success'] }, 
   size: { control: 'radio', options: ['small', 'medium','large'] },
@@ -30,7 +31,7 @@ export default {
   uppercase: { control: 'boolean' },
   borderRadius: { control: 'number' },
   rounded: { control: 'boolean' },
-  
+
   },
 } as ComponentMeta<typeof Button>;
 
@@ -44,7 +45,7 @@ Default.args = {
   cssStyle:`&{box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   &:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.64), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.64), 0 17px 50px 0 rgba(255,0,0,0.69);
   }
   `,
   color: "primary",
@@ -53,4 +54,5 @@ Default.args = {
   uppercase:false,
   borderRadius:5,
   rounded:false,
+
 };

@@ -6,6 +6,7 @@ import { defaultTheme,ITheme } from "../../libs/defaultTheme";
 
 export interface IButton {
   children?:ReactNode;
+  theme?:{};
   tailwindStyle?:string,
   cssStyle?:string,
   color?: "primary" | "secondary"| "error"| "warning"| "info"| "success";
@@ -16,21 +17,20 @@ export interface IButton {
   rounded?:boolean;
 }
 
-type TButton = 
-{
-  props:{
-    children?:ReactNode;
-    tailwindStyle?:string,
-    cssStyle?:string,
-    color?:string,
-    size?:string,
-    state?:string,
-    uppercase?:boolean,
-    borderRadius?:number,
-    rounded?:boolean,
-  }
-
-};
+// type TButton = 
+// {
+//   props:{
+//     children?:ReactNode;
+//     tailwindStyle?:string,
+//     cssStyle?:string,
+//     color?:string,
+//     size?:string,
+//     state?:string,
+//     uppercase?:boolean,
+//     borderRadius?:number,
+//     rounded?:boolean,
+//   }
+// };
 
 
 const tailwindToCss = (input:string) => {
@@ -40,7 +40,7 @@ const tailwindToCss = (input:string) => {
 
 const getStyle = (input:IButton) => {
   const {
-          children,
+          theme={},
           tailwindStyle="",
           cssStyle="",
           color="primary",
@@ -76,27 +76,33 @@ const getStyle = (input:IButton) => {
 
 
 const Button= (props:IButton) => {
-  const {
-    children,
-    tailwindStyle="",
-    color="primary",
-    size="small",
-    state="contained",
-    uppercase=false,
-    borderRadius=5
-  }=props;
-
   return (
-    <StyledButton props={props}>
-      {children} 
+    <StyledButton 
+      tailwindStyle= {props.tailwindStyle}
+      cssStyle= {props.cssStyle}
+      color= {props.color}
+      size= {props.size}
+      state= {props.state}
+      uppercase= {props.uppercase}
+      borderRadius= {props.borderRadius}
+      rounded= {props.rounded}
+      theme= {props.theme}
+    >
+      {props.children} 
     </StyledButton>
   );
 };
 
 
 
-const StyledButton = styled.button<TButton>`
-  ${(p:any) => getStyle(p.props)};
+const StyledButton = styled.button<IButton>`
+  ${(props:any) => getStyle(props)};
 `;
 
+// We are passing a default theme for Buttons that arent wrapped in the ThemeProvider
+StyledButton.defaultProps = {
+  theme: {
+    main: "palevioletred"
+  }
+}
 export default Button;
